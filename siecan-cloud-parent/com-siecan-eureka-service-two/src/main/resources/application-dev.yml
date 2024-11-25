@@ -1,0 +1,19 @@
+spring:
+   application:
+      name: SIECAN-EUREKA-SERVICE-TWO
+---
+
+eureka:
+  instance:
+    hostname: eurekaTwo
+    prefer-ip-address: true
+  client:
+    register-with-eureka: false #把自身当做客户端注册到其他Eureka服务器
+    fetch-registry: false #在本地缓存所有实例注册信息
+    service-url:
+      defaultZone: http://eurekaOne:9090/eureka/
+  server:
+    enable-self-preservation: false
+    #剔除失效服务间隔
+    eviction-interval-timer-in-ms: 60000
+    peer-node-read-timeout-ms: 600

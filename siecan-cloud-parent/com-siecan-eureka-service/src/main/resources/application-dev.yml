@@ -1,0 +1,20 @@
+spring:
+   application:
+      name: SIECAN-EUREKA-SERVICE-ONE
+---
+
+eureka:
+  instance:
+    hostname: eurekaOne
+    prefer-ip-address: true
+  client:
+    register-with-eureka: false #把自身当做客户端注册到其他Eureka服务器
+    fetch-registry: false #在本地缓存所有实例注册信息
+    service-url:
+      defaultZone: http://eurekaTwo:9091/eureka/   
+      # 关闭保护机制
+  server:
+    enable-self-preservation: false
+    #剔除失效服务间隔
+    eviction-interval-timer-in-ms: 60000
+    peer-node-read-timeout-ms: 600 #默认200 增大为 解决It seems to be a socket read timeout exception, it will retry later. if it continues to happen and some eureka node occupied all the cpu time, you should set property 'eureka.server.peer-node-read-timeout-ms' to a bigger value

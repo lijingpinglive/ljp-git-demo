@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: SIECAN-ZUUL-PROJECT
+eureka:
+  instance:
+    lease-expiration-duration-in-seconds: 30
+    lease-renewal-interval-in-seconds: 10
+    prefer-ip-address: true
+#    ip-address: 127.0.0.1
+#    instance-id: dragon.com
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://eurekaOne:9090/eureka/,http://eurekaTwo:9091/eureka/
+
+### 网关配置
+zuul:
+  host: #解决网关超时
+    connect-timeout-millis: 2000
+    socket-timeout-millis: 10000
+  routes:
+    manage:
+      path: /manage/**
+      serviceId: SIECAN-MANAGE-PROJECT
