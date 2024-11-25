@@ -12,7 +12,7 @@ eureka:
     fetch-registry: false #在本地缓存所有实例注册信息
     service-url:
       defaultZone: http://eurekaTwo:9091/eureka/   
-      # 关闭保护机制
+      # 关闭保护机制成功，加载10分钟
   server:
     enable-self-preservation: false
     #剔除失效服务间隔
